@@ -3,7 +3,7 @@ import morgan from 'morgan';
 import cors from 'cors';
 
 import indexRoutes from './routes/indexRoutes';
-//import userRoutes from './routes/userRoutes'; 
+import userRoutes from './routes/userRoutes'; 
 
 
 //CLASE PARA ININCIAR EL SERVIDOR
@@ -25,11 +25,18 @@ class Server {
         this.app.use(morgan('dev'));
         //uso de cors para permitir acceder a la API por angular
         this.app.use(cors());
+        //Permitir el formato json que sustituye al bodyparser
+        this.app.use(express.json());
+        //Permitir el formato urlencoded que sustituye al bodyparser
+
+
         
     }
 
     routes(): void{
+        //Importacion de rutas
         this.app.use('/api', indexRoutes);
+        this.app.use('/user', userRoutes);
 
     }
 

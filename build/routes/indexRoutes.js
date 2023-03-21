@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 //Importar el metodo routes que devuelve un objeto
 const express_1 = require("express");
+const indexController_1 = require("../controller/indexController");
 //Inicializar la clase 
 class IndexRoutes {
     constructor() {
@@ -9,7 +10,7 @@ class IndexRoutes {
         this.config();
     }
     config() {
-        this.router.get('/', (req, res) => res.send('Hello World'));
+        this.router.get('/', indexController_1.indexController.index);
     }
 }
 const indexRoutes = new IndexRoutes();
